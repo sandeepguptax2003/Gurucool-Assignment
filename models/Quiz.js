@@ -24,22 +24,10 @@ const QuizSchema = new mongoose.Schema({
   startDate: {
     type: Date,
     required: true,
-    set: function(v) {
-      return moment.tz(v, "YYYY-MM-DD HH:mm:ss", "Asia/Kolkata").toDate();
-    },
-    get: function(v) {
-      return moment(v).tz("Asia/Kolkata").format("YYYY-MM-DD HH:mm:ss");
-    }
   },
   endDate: {
     type: Date,
     required: true,
-    set: function(v) {
-      return moment.tz(v, "YYYY-MM-DD HH:mm:ss", "Asia/Kolkata").toDate();
-    },
-    get: function(v) {
-      return moment(v).tz("Asia/Kolkata").format("YYYY-MM-DD HH:mm:ss");
-    }
   },
   status: {
     type: String,
@@ -48,8 +36,6 @@ const QuizSchema = new mongoose.Schema({
   },
 }, { 
   timestamps: true,
-  toJSON: { getters: true },
-  toObject: { getters: true }
 });
 
 function arrayLimit(val) {
@@ -57,6 +43,10 @@ function arrayLimit(val) {
 }
 
 QuizSchema.pre('save', function(next) {
+  const now = moment().tz("Asia/Kolkata");
+  const start = moment(this.startDate).tz("Asia/Kolkata");
+  const end = moment(this.endDate).tz("Asia/Kolkata");
+
   if (now.isBefore(start)) {
     this.status = 'inactive';
   } else if (now.isSameOrAfter(start) && now.isBefore(end)) {
@@ -67,5 +57,12 @@ QuizSchema.pre('save', function(next) {
 
   next();
 });
+
+QuizSchema.methods.toJSON = function() {
+  const obj = this.toObject();
+  obj.startDate = moment(obj.startDate).tz("Asia/Kolkata").format("YYYY-MM-DD HH:mm:ss");
+  obj.endDate = moment(obj.endDate).tz("Asia/Kolkata").format("YYYY-MM-DD HH:mm:ss");
+  return obj;
+};
 
 module.exports = mongoose.model('Quiz', QuizSchema);
