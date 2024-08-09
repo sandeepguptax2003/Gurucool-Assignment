@@ -1,0 +1,209 @@
+{
+	"info": {
+		"_postman_id": "28d51b57-69cd-445b-a328-50e4cb0e0237",
+		"name": "Gurucool-Assignment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25446062"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"test1@gmail.com\",\r\n    \"password\":\"test1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://gurucool-assignment-zobq.onrender.com/api/auth/register",
+					"protocol": "https",
+					"host": [
+						"gurucool-assignment-zobq",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"test1@gmail.com\",\r\n    \"password\":\"test1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://gurucool-assignment-zobq.onrender.com/api/auth/login",
+					"protocol": "https",
+					"host": [
+						"gurucool-assignment-zobq",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Quiz",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NmIzN2Q5MGI3OTI1YWMzZTVmMDI0ODciLCJpYXQiOjE3MjMxODQ1NDgsImV4cCI6MTcyMzE4ODE0OH0.yE36if1dmT1i-3fvKxtallTRpbV44-92WursbAGUbzE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"question\": \"What is the capital of India?\",\r\n  \"options\": [\"Mumbai\", \"New Delhi\", \"Kolkata\", \"Chennai\"],\r\n  \"rightAnswer\": 2,\r\n  \"startDate\": \"2024-09-07 12:17:00\",\r\n  \"endDate\": \"2024-09-07 12:20:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://gurucool-assignment-zobq.onrender.com/api/quizzes",
+					"protocol": "https",
+					"host": [
+						"gurucool-assignment-zobq",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"quizzes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Active Quiz",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NmIzN2Q5MGI3OTI1YWMzZTVmMDI0ODciLCJpYXQiOjE3MjMxODQ1NDgsImV4cCI6MTcyMzE4ODE0OH0.yE36if1dmT1i-3fvKxtallTRpbV44-92WursbAGUbzE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://gurucool-assignment-zobq.onrender.com/api/quizzes/active",
+					"protocol": "https",
+					"host": [
+						"gurucool-assignment-zobq",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"quizzes",
+						"active"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Quiz Result",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://gurucool-assignment-zobq.onrender.com/api/quizzes/66b5b5bfa130b9de61afa8b5/result",
+					"protocol": "https",
+					"host": [
+						"gurucool-assignment-zobq",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"quizzes",
+						"66b5b5bfa130b9de61afa8b5",
+						"result"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Quizzes",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NmIzN2Q5MGI3OTI1YWMzZTVmMDI0ODciLCJpYXQiOjE3MjMxODQ1NDgsImV4cCI6MTcyMzE4ODE0OH0.yE36if1dmT1i-3fvKxtallTRpbV44-92WursbAGUbzE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://gurucool-assignment-zobq.onrender.com/api/quizzes/all",
+					"protocol": "https",
+					"host": [
+						"gurucool-assignment-zobq",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"quizzes",
+						"all"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
